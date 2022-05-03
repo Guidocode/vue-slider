@@ -52,7 +52,7 @@ const app = new Vue ({
             }
         ],
 
-        indexActiveSlide: 0,
+        indexCurrentSlide: 0,
         activeClass: 'active',
         isActive: true,
     },
@@ -61,24 +61,29 @@ const app = new Vue ({
 
         nextSlide(){
 
-            this.indexActiveSlide++;
+            this.indexCurrentSlide++;
 
-            if(this.indexActiveSlide > this.slides.length -1){
-                this.indexActiveSlide = 0;
+            if(this.indexCurrentSlide > this.slides.length -1){
+                this.indexCurrentSlide = 0;
             }
         },
 
         prevSlide(){
 
-            this.indexActiveSlide--;
+            this.indexCurrentSlide--;
 
-            if(this.indexActiveSlide < 0){
-                this.indexActiveSlide = this.slides.length -1
+            if(this.indexCurrentSlide < 0){
+                this.indexCurrentSlide = this.slides.length -1
             }
         },
 
-        activeSlide(indice){
-            this.indexActiveSlide = indice;
+        currentSlide(indice){
+
+            this.indexCurrentSlide = indice;            
+        },
+
+        // le attiva tutte...
+        activeSlide(){
 
             this.isActive = !this.isActive;
         }
