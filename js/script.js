@@ -52,32 +52,38 @@ const app = new Vue ({
             }
         ],
 
-        counterSlide: 0,
+        indexActiveSlide: 0,
+        activeClass: 'active',
+        isActive: true,
     },
 
     methods:{
 
         nextSlide(){
 
-            this.counterSlide++;
+            this.indexActiveSlide++;
 
-            if(this.counterSlide > this.slides.length -1){
-                this.counterSlide = 0;
+            if(this.indexActiveSlide > this.slides.length -1){
+                this.indexActiveSlide = 0;
             }
         },
 
         prevSlide(){
 
-            this.counterSlide--;
+            this.indexActiveSlide--;
 
-            if(this.counterSlide < 0){
-                this.counterSlide = this.slides.length -1
+            if(this.indexActiveSlide < 0){
+                this.indexActiveSlide = this.slides.length -1
             }
+        },
+
+        activeSlide(indice){
+            this.indexActiveSlide = indice;
+
+            this.isActive = !this.isActive;
         }
+
     }
 
-
-    
-    
     
 })

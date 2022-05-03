@@ -17,22 +17,24 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="item">
-                    <img :src="slides[counterSlide].image" :alt="slides[counterSlide].title" />
+                    <img :src="slides[indexActiveSlide].image" :alt="slides[indexActiveSlide].title" />
                     <div class="text">
-                        <h3>{{slides[counterSlide].title}}</h3>
+                        <h3>{{slides[indexActiveSlide].title}}</h3>
                         <p>
-                            {{slides[counterSlide].text}}                    
+                            {{slides[indexActiveSlide].text}}                    
                         </p>
                     </div>
                 </div>
 
                 <div class="thumbs">
+
                     <div @click="prevSlide()" class="prev"></div>
                     <div @click="nextSlide()" class="next"></div>
-                    <div class="thumb active">
-                        <img src="img/01.jpg" alt="Svezia"/>
+
+                    <div v-for="(slide, index) in slides" class="thumb">
+                        <img @click="activeSlide(index)" :class="isActive ? '' : 'active'" :src="slide.image" alt="slide.title"/>
                     </div>
-                    <div class="thumb">
+                    <!-- <div class="thumb">
                         <img src="img/02.jpg" alt="Svizzera" />
                     </div>
                     <div class="thumb">
@@ -43,7 +45,7 @@
                     </div>
                     <div class="thumb">
                         <img src="img/05.jpg" alt="Paradise" />
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
