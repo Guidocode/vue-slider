@@ -53,8 +53,7 @@ const app = new Vue ({
         ],
 
         indexCurrentSlide: 0,
-        activeClass: 'active',
-        isActive: true,
+        autoScroll: null
     },
 
     methods:{
@@ -82,12 +81,30 @@ const app = new Vue ({
             this.indexCurrentSlide = indice;            
         },
 
-        // le attiva tutte...
-        activeSlide(){
+        mouseOver(){
 
-            this.isActive = !this.isActive;
+            console.log('Sono sopra, fermo il tempo');
+            clearInterval(this.autoScroll);
+            this.autoScroll = null;
+        },
+        mouseLeave(){
+
+            console.log('Sono fuori, riparte il tempo');
+            this.startAutoScroll();
+        },
+
+        startAutoScroll(){
+
+            this.autoScroll = setInterval(() => {
+                this.nextSlide();
+            }, 1000)
         }
 
+    },
+
+    mounted() {
+
+        this.startAutoScroll()
     }
 
     
