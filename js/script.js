@@ -97,7 +97,7 @@ const app = new Vue ({
 
             this.autoScroll = setInterval(() => {
                 this.nextSlide();
-            }, 1000)
+            }, 3000)
         }
 
     },
